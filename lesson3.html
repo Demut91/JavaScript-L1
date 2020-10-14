@@ -1,26 +1,42 @@
 <meta charset="utf-8">
-<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Recusandae exercitationem, consequuntur voluptates, voluptatem, quisquam minus illo inventore est quia blanditiis, similique consequatur voluptatum tenetur! Architecto incidunt, iusto quam soluta qui quas porro temporibus cumque totam obcaecati optio veniam culpa. Repudiandae itaque dignissimos fuga quas magni earum asperiores consequatur. Repudiandae, nesciunt?</p>
 <script type="text/javascript">
-function proverkaDeleniya(counter){
-	let ostatok;
-	let prostoe = true;
-	for(var i = 2; i < counter; i++)  {
-		ostatok = counter % i;
-		if(ostatok == 0) {
-		prostoe = false;
-		return prostoe;
-		}
-	}
-		return prostoe;
-}
-	let counter = 2;
-	const array = [];
-		while(counter < 100){
-			//console.log(counter);
-			if(proverkaDeleniya(counter)) {
-				array.push(counter); counter++;
-			} else {counter++;
+/*
+1 задание
+*/
+	function checkingDivision(counter){
+		let primeNumber = true;
+		for(var i = 2; i < counter; i++)  {
+			if(counter % i == 0) {
+				primeNumber = false;
+				return primeNumber;
 			}
 		}
-	console.log(array);
+			return primeNumber;
+	}
+		let counter = 2;
+		const array = [];
+		while(counter < 100){
+			if(checkingDivision(counter)) {
+				array.push(counter); counter++;
+				} else {counter++;
+			}
+		}
+		console.log('1 задание');
+		console.log(array);
+/*
+2 задание
+*/
+	function countBasketPrice(basket){
+		const sum = basket.reduce((total, number) => total + number);
+		return sum;
+	}
+	const basket = [5, 13, 63, 24, 65];
+	let result = countBasketPrice(basket);
+	console.log('2 задание')
+	console.log(result);
+/*
+3 задание
+*/
+console.log('3 задание');
+	for(z = 0; z <= 10; console.log(z), z++);
 </script>
