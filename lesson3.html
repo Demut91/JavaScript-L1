@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<p>Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Recusandae exercitationem, consequuntur voluptates, voluptatem, quisquam minus illo inventore est quia blanditiis, similique consequatur voluptatum tenetur! Architecto incidunt, iusto quam soluta qui quas porro temporibus cumque totam obcaecati optio veniam culpa. Repudiandae itaque dignissimos fuga quas magni earum asperiores consequatur. Repudiandae, nesciunt?</p>
+<script type="text/javascript">
+function proverkaDeleniya(counter){
+	let ostatok;
+	let prostoe = true;
+	for(var i = 2; i < counter; i++)  {
+		ostatok = counter % i;
+		if(ostatok == 0) {
+		prostoe = false;
+		return prostoe;
+		}
+	}
+		return prostoe;
+}
+	let counter = 2;
+	const array = [];
+		while(counter < 100){
+			//console.log(counter);
+			if(proverkaDeleniya(counter)) {
+				array.push(counter); counter++;
+			} else {counter++;
+			}
+		}
+	console.log(array);
+</script>
