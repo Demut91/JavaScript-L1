@@ -1,0 +1,99 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+// 3 задание
+	const a = +prompt('Введите целое число');
+	const b = +prompt('Введите второе целое число');
+	let c;
+		if(a >= 0 && b >= 0) {
+		c = a-b;
+		} else if(a < 0 && b < 0) {
+		c = a*b;
+		} else {
+		c = a + b;
+}
+	document.write(c);
+	//
+	//4 задание
+	//
+var z = 8;
+	switch (z) {
+		case 0:
+		document.write("0");
+		case 1:
+		document.write("1");
+		case 2:
+		document.write("2");
+		case 3:
+		document.write("3");
+		case 4:
+		document.write("4");
+		case 5:
+		document.write("5");
+		case 6:
+		document.write("6");
+		case 7:
+		document.write("7");
+		case 8:
+		document.write("8");
+		case 9:
+		document.write("9");
+		case 10:
+		document.write("10");
+		case 11:
+		document.write("11");
+		case 12:
+		document.write("12");
+		case 13:
+		document.write("13");
+		case 14:
+		document.write("14");
+		case 15:
+		document.write("15");
+		}
+	//
+	//5 задание
+	//
+function sum(x1, x2) {
+	return x1 + x2;
+}
+function sub(x1, x2) {
+	return x1 - x2;
+}
+function multipl(x1, x2) {
+	return x1 * x2;
+}
+function divis(x1, x2) {
+	return x1 / x2;
+}
+	//
+	//6 задание
+	//
+function mathOperation(arg1, arg2, operation){
+	switch(operation) {
+			case 'сложение':
+				return sum(arg1, arg2);
+				break;
+			case 'вычитание':
+				return sub(arg1, arg2);
+				break;
+			case 'умножение':
+				return multipl(arg1, arg2);
+				break;
+			case 'деление':
+				return divis(arg1, arg2);
+				break;
+	}
+}
+console.log(mathOperation(100, 4, 'деление')); //проверка работы
+	//
+	//8 задание
+	//
+function power(val, pow) {
+	if (pow == 1) {
+		return val;
+	} else {
+		return val * power(val, pow - 1);
+	}
+}
+console.log(power(2, 10)); //проверка работы
+</script>
