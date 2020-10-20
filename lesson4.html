@@ -1,0 +1,57 @@
+<meta charset="utf-8">
+<script>
+//
+//1 задание
+//
+function transformation(number) {
+	let objN = {};
+	objN.hundreds = parseInt((number % 1000) / 100);
+	objN.tens = parseInt(number % 100 / 10);
+	objN.ones = number % 10;
+	return(objN);
+}
+console.log(transformation(prompt('Введите число')));
+//
+//2 задание
+//
+//класс товара
+class marmalade {
+	name = 'jellyBears'
+	taste = ''
+	price = ''
+	addedToBasket = false
+	_amount = 0
+	adding () {
+		this.addedToBasket = true
+		this._amount++
+	}
+	constructor (taste, price) {
+		this.taste = taste
+		this.price = price
+	}
+}
+const bear1 = new marmalade('orange', 54)
+const bear2 = new marmalade('pineapple', 38)
+const bear3 = new marmalade('cherry', 42)
+//класс корзины
+class basket {
+	list = [] //пустой массив товаров-объектов
+	sum = 0
+	adding (obj) {
+		obj.adding() //выполнение метода для товара
+		this.sum = this.sum + obj.price //подсчет суммы корзины
+		if (this.list.indexOf(obj) < 0) { //проверяем, не добавлен ли уже товар
+			this.list.push(obj) //добавляем товар в корзину
+			}
+		}
+	}
+const myBasket = new basket
+//добавление в корзину
+	myBasket.adding(bear1)
+	myBasket.adding(bear1)
+	myBasket.adding(bear2)
+	myBasket.adding(bear3)
+//список и сумма
+	console.log(myBasket.list)
+	console.log(myBasket.sum)
+</script>
