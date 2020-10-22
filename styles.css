@@ -1,0 +1,16 @@
+main {
+	width: 800px;
+	height: 800px;
+	margin: 50px;
+	border: 2px solid black;
+
+}
+.cell {
+	float: right;
+	height: 100px;
+	width: 100px;
+}
+
+.black {
+	background-color: black;
+}
