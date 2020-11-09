@@ -8,21 +8,23 @@ class Product {
 		this.addedToBasket = true
 		this._amount++
 	}
+
+	removing () {
+		this._amount--
+	}
+
 	constructor (taste, img, price) {
 		this.img = img
 		this.taste = taste
 		this.price = price
 	}
-	editamount () {
-	}
 
  	getRender () {
    	 	const { taste, price, img } = this
-   		const Place = document.querySelector('.container2')
+   		const place = document.querySelector('.container2')
    	 	const wrapper = document.createElement('div')
     	wrapper.classList.add('product')
-   	 	Place.appendChild(wrapper)
-
+   	 	place.appendChild(wrapper)
     	wrapper.innerHTML = `
     	<h4>Конфеты Ozera "${taste}"</h4>
         <img src="../img/${img}" alt="sweetphoto" width=200 px> <br>
@@ -37,7 +39,6 @@ class Product {
 
 	buttonRender () {
     	const btn2 = document.createElement('div')
-    	//wrapper.appendChild(btn2)
     	btn2.classList.add('button')
     	btn2.innerHTML = 'В корзину'
 
@@ -49,10 +50,25 @@ class Product {
     	})
     	return btn2
 
+	}
 
-   	}
+
+
+	minusRender () {
+    	const btn3 = document.createElement('button')
+    	btn3.classList.add('minus')
+    	btn3.innerHTML = '-'
+
+    	btn3.addEventListener('click', () => {
+    		const myBasket = new Cart()
+    		myBasket.removing(this)
+    		myBasket.render()
+
+    	})
+    	return btn3
+
+	}
 }
-
 
 const ozera1 = new Product('Вкус успешного дня', 'day.png', 214)
 ozera1.getRender()
@@ -65,47 +81,41 @@ ozera3.getRender()
 //
 //
 class Cart {
-
-
-
-
 	constructor () {
-    if (Cart._instance) {
-      return Cart._instance
-    }
-
- //   super (list)
-
-    Cart._instance = this
-  }
-
-
-
-
+    	if (Cart._instance) {
+      		return Cart._instance
+    	}
+	Cart._instance = this
+  	}
 
 	list = []                                    //пустой массив товаров-объектов
 	sum = 0
-	adding (obj) {
-		obj.adding()                             //выполнение метода для товара
-		this.sum = this.sum + obj.price          //подсчет суммы корзины
-		if (this.list.indexOf(obj) < 0) {        //проверяем, не добавлен ли уже товар
-			this.list.push(obj)                  //добавляем товар в корзину
+	adding (product) {
+		product.adding()                             //выполнение метода для товара
+		this.sum = this.sum + product.price          //подсчет суммы корзины
+		if (this.list.indexOf(product) < 0) {        //проверяем, не добавлен ли уже товар
+			this.list.push(product)                  //добавляем товар в корзину
 			}
 		}
+	removing (product) {
+		product.removing()
+		this.sum = this.sum - product.price
+		// if (product._amount == 0) {
+
+		//	}
+		}
+
+
 	render () {
 		const table = document.querySelector('table')
 
 
-    if (!table) {
-      return
-    }
+    	if (!table) {
+    	  return
+    	}
+		table.innerHTML = ''
 
-    table.innerHTML = ''
-
-
-
-
-		this.list.forEach(product => {
+			this.list.forEach(product => {
 			const tablerow = document.createElement('tr')       //добаление строки
 			table.appendChild(tablerow)
 
@@ -116,16 +126,16 @@ class Cart {
 			const amount = document.createElement('td')         //строка с количеством
 			amount.innerText = product._amount
 			tablerow.appendChild(amount)
+			amount.appendChild(product.minusRender())
 
-			const price = document.createElement('td')         //строка с ценой
+			const price = document.createElement('td')           //строка с ценой
 			price.innerText = product.price * product._amount
 			tablerow.appendChild(price)
+
 
 		})
 	const checkout = document.createElement('tr')
 	table.appendChild(checkout)
-
-
 
 	const cellCheckout = document.createElement('td')
 	checkout.appendChild(cellCheckout)
@@ -137,16 +147,5 @@ class Cart {
 	checkout.appendChild(summa)
 	summa.innerText = this.sum
 	}
-
-
 }
-
-// const cartLink = document.querySelector('#cart')
-// cartLink.addEventListener('click', () => {
-// 	myBasket.render()
-// })
-
-
-//добавление в корзину
-//myBasket.adding(ozera1)
 
